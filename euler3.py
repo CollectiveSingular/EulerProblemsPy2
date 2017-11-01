@@ -3,15 +3,16 @@ Project Euler Problem #3
 
 Find the largest prime factor of 600851475143
 """
-import math as m
+import math
 
 
 def factor(number):
     ''' Finds the factors of a given number (works)'''
     factors = []
-    for i in range(1, number + 1, 2):
+    for i in range(1, int(math.sqrt(number)) + 1):
         if (number) % i == 0:
             factors.append(i)
+            factors.append(number/i)
     return factors
 
 '''
@@ -50,20 +51,20 @@ Sieve of Eratosthenes
  '''
 
 
-def factor_dict(factors):
+def factor_dict(number):
     ''' creates a dictionary of factors that are all "True".'''
     my_dict = {}
-    for i in factors:
+    for i in number:
         my_dict[i] = True
     return my_dict
 
 
-def prime_factor(array):
+def prime_factor(number):
     ''' Evaluates dictionary keys to see if they are prime numbers '''
-    factors = factor(array)
+    factors = factor(number)
     true_list = factor_dict(factors)
     for k in true_list:
-        for i in range(2, (int(m.sqrt(array) + 1))):
+        for i in range(2, (int(math.sqrt(number) + 1))):
             if k != i:
                 if k % i == 0:
                     true_list[k] = False
@@ -71,17 +72,14 @@ def prime_factor(array):
 
 def prime_list(number):
     ''' returns all key in a dict with a True value'''
-    host = prime_factor(number)
-    primes = []
-    for k in host:
-        if host[k] == True:
-            primes.append(k)
-    if number % 2 == 0:
-        primes.append(2)
-    if number % 3 == 0:
-        primes.append(3)
-    return primes
+    factors = prime_factor(number)
+    final_list = []
+    for k in factors:
+        if factors[k] == True:
+            final_list.append(k)
+    return final_list
 
-
-print prime_factor(100)
-print prime_list(100)
+print prime_factor(600851475143)
+primo = prime_list(600851475143)
+print primo
+print max(primo)
