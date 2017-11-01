@@ -79,6 +79,7 @@ def prime_list(number):
             final_list.append(k)
     return final_list
 
-
 print prime_factor(600851475143)
-print prime_list(600851475143)
+primo = prime_list(600851475143)
+print primo
+print max(primo)
