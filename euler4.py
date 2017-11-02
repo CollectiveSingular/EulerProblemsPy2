@@ -1,7 +1,7 @@
 '''
 Euler Problem #4
 
-Find the largest palindrome which is a product of two two-digit numbers
+Find the largest palindrome which is a product of two three-digit numbers
 '''
 
 
@@ -14,8 +14,8 @@ def palindrome_pairs(number):
     for i in cog1:
         for n in cog2:
             answer = i * n
-            if str(answer) == reversed(str(answer)):
-                palindromes.append(i, n)
+            if answer == int(str(answer)[::-1]):
+                palindromes.append((i, n))
     return palindromes
 
 def max_tuple(tuples):
@@ -27,5 +27,5 @@ def max_tuple(tuples):
             maximum = a * b
     return maximum
 
-print palindrome_pairs(99)
-print max_tuple(99)
+print palindrome_pairs(999)
+print max_tuple(999)
