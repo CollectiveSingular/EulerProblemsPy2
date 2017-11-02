@@ -18,4 +18,21 @@ def factor(number):
             factors.append(number / i)
     return factors
 
-''' Evaluate list for each number from 1 to 20 '''
+def factor_dict(number):
+    ''' creates a dictionary of factors that are all "True".'''
+    my_dict = {}
+    for i in number:
+        my_dict[i] = True
+    return my_dict
+
+def factor_eval(max_factor):
+    ''' Evaluate list for each number from 1 to 20 '''
+    factors = range(1, max_factor+1)
+    count = max_factor
+    for i in factors:
+        if count % i != 0:
+            count += 1
+        else:
+            return count
+
+print factor_eval(20)
